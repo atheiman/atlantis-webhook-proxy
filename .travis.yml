@@ -1,0 +1,19 @@
+language: go
+go:
+- 1.x
+before_install: curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+install: make dep
+script:
+- if [[ -n "$(go fmt ./api)" ]]; then exit 1; fi
+- make test
+- make build
+- make package
+deploy:
+  provider: releases
+  api_key:
+    secure: Ood/YuNZYJOtaqak5Up1x6iE0KRZ59dlnQ34nbVfju45/WtDjnOTwtj9uhSTCJgsN7aaudu619i+Uia4x4TaBiLrh426njLSexIhppQdfdO10I2gSlIldtjaTBmLKwNWAXTMlY3QCyMoq6GzZrgsQXi2glQ4eZH3NeFmoKnXcUTPxr252qco1jcfsolJKQLLowMUVG/M/jubL3U1yfdFwox8CdZ4JpEmHf5LinVCj4AmfvA5XmTfikmRyIE1XylfLwCg87VtZmJgRyoMCPZzkBICJEKjVf2EH5LKZl/LCRLvhZOLujXkFqlXnLd/CKtguWSqw5Mh8KgJqiGshXBg3R2ahyCnefKVIBggjsv8cgrKo6R+2K+4BO7/ZTNaVYGlpHeG93pdsQyZj7ntuBM339U/Uox65q5p/IexMVFTVKp3uBII7P7YYIdJnPH9JoFT3ViEHnFbWiL2j1UGlV7KrAYn1aXoVfSrugs/C/1lwdQiJJ7Ir2NkkYQiGw2hmBPDC22GqVzz9MziMN1Gm1vOg12Ohhv3hKDBNa7T6zQu1uSTKd87xs0pish3dUqtuLwi/JXayOexJzutxg9+Kf8oNg1lRpxLcMh4JtAtM9QlgEgjfdauETqBipfoTpqaHQA7oGcp6fBPYWIyzR8IR2zb+MEaiaKC3TjIfoEt+DaTa4Y=
+  skip_cleanup: true
+  file: atlantis-webhook-proxy.zip
+  on:
+    repo: atheiman/atlantis-webhook-proxy
+    tags: true

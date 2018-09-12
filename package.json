@@ -1,0 +1,21 @@
+{
+  "name": "atlantis-webhook-proxy",
+  "version": "0.1.0",
+  "description": "API to proxy Atlantis webhook requests from GitHub / GitLab to one or more Atlantis servers based on configured rules",
+  "scripts": {
+    "serverless": "serverless"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atheiman/atlantis-webhook-proxy.git"
+  },
+  "author": "Austin Heiman <atheimanksu@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/atheiman/atlantis-webhook-proxy/issues"
+  },
+  "homepage": "https://github.com/atheiman/atlantis-webhook-proxy#readme",
+  "dependencies": {
+    "serverless": "^1.31.0"
+  }
+}
