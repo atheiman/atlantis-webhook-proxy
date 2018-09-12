@@ -1,0 +1,21 @@
+service: atlantis-webhook-proxy
+
+provider:
+  name: aws
+  runtime: go1.x
+  versionFunctions: false
+
+package:
+ exclude:
+   - ./**
+ include:
+   - ./bin/**
+
+functions:
+  api:
+    name: ${self:service}
+    handler: bin/api
+    events:
+      - http:
+          path: /ping
+          method: ANY
